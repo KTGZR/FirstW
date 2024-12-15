@@ -1,0 +1,30 @@
+.Body{
+    background-color: lightblue;
+    display:block;
+    background-color: aquamarine;
+    max-width: 100%;
+    height: auto;
+}
+
+.date-box{
+
+    display: block;
+    justify-content: center;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: bisque;
+}
+.Clear{
+    color: red;
+}
+.Text{
+ background-color: blueviolet;
+}
+.h1{
+    font-size: 40px;
+    font-family: Arial,Helvetica, sans-serif;
+    background: linear-gradient(to right, #f32170, #ff6b08,#cf23cf, #eedd44);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" rel="stylesheet"  type="text/css">
+</head>
+<body class="main-back">
+    
+ <!--Блок страницы-->
+
+<div class="reg-square"><!--Окно регистрации-->
+<div class='reg-header'> 
+    <h2>Авторизация</h2>
+</div> <!--Заголовок регистрации-->
+<form action="/afterauth" method = "POST" id="MainForm">
+ <p>
+    <label>Почта</label><br>
+ <input type="email" placeholder="@mail.ru" name="email" id="input_email" required>
+ </p>
+ <p>
+    <label>Пароль</label><br>
+ <input type="password" placeholder="Password" name="pass" id="input_password" required>
+ </p>
+ <input class="button" type="submit" value="Войти" id="Next"><br>
+</form>
+</div>
+</body>
+</html>

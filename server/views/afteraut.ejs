@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles2.css" rel="stylesheet" type="text/css">
+</head>
+<body class="Body">
+    <form action="/takeDate" method="POST" id="DopForm">
+        <h1>11111</h1>
+     <p>
+        <p class="Text">Выберите временной промежуток</p>
+     </p>
+     c 
+     <input type="date" id="start_date" name="start_date">
+     по
+     <input type="date" id="end_date" name="end_date">
+     <button type="submit" id="Download">Забрать</button>
+</form>
+</body>
+</html>
+
+
+<button id="load-data-button">Загрузить данные</button>
+  <div id="data-container"></div>
+
+  <script>
+    document.getElementById('load-data-button').addEventListener('click', function() {
+      fetch('/data')
+        .then(response => response.text())
+        .then(htmlTable => {
+          document.getElementById('data-container').innerHTML = htmlTable;
+        })
+        .catch(error => console.error('Ошибка:', error));
+    });
+  </script>
