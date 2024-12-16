@@ -15,4 +15,5 @@ CREATE TABLE IF NOT EXISTS lastupdate(
 
 CREATE TABLE IF NOT EXISTS holidays(
     userid SERIAL PRIMARY KEY,
+    name VARCHAR(255)
 )
