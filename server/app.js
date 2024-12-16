@@ -4,9 +4,7 @@ const bodyParser = require('body-parser');
 const {PythonShell} = require('python-shell');
 const pool = require('./config/db.js');
 const path = require('path');
-const e = require('connect-flash');
 const app = express();
-const host = '127.0.0.1';
 
 const port = 8000;
 const filePath = path.join(__dirname,'Equipment/data.xlsx');
@@ -35,7 +33,7 @@ app.get('/download',(req,res)=>{
   // res.setHeader('Content-Disposition','attachment; filename=Holidays.xlsx');
   // res.setHeader('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   const options = {
-    scriptPath:'./scripts/'
+    scriptPath:'./server/scripts/'
   }
   PythonShell.run('CollectData.py',options).then(messages=>{
     console.log('Данные с базы собраны в файл')
@@ -54,7 +52,7 @@ app.post('/takeDate', (req, res) => {
   console.log(`Дата начала: ${startDate}, Дата конца: ${endDate}`);
 
   const options = {
-    scriptPath:'./scripts/',
+    scriptPath:'./server/scripts/',
     args: [startDate, endDate] 
   };
 
@@ -77,7 +75,7 @@ app.post('/afterauth', async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.pass;
-    const query = 'SELECT * FROM public.Holidays WHERE email like $1 AND password like $2'; 
+    const query = 'SELECT * FROM public.users WHERE email like $1 AND password like $2'; 
     const result = await pool.query(query, [email, password]);
     if (result.rows.length > 0) {
       res.redirect('/success'); 
@@ -131,6 +129,4 @@ app.get('/success',(req,res)=>{
     }
     });
   });
-
-
 
