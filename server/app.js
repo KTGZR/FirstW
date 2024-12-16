@@ -35,7 +35,7 @@ app.get('/download',(req,res)=>{
   // res.setHeader('Content-Disposition','attachment; filename=Holidays.xlsx');
   // res.setHeader('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   const options = {
-    scriptPath:'./scripts/'
+    scriptPath:'./server/scripts/'
   }
   PythonShell.run('CollectData.py',options).then(messages=>{
     console.log('Данные с базы собраны в файл')
@@ -54,7 +54,7 @@ app.post('/takeDate', (req, res) => {
   console.log(`Дата начала: ${startDate}, Дата конца: ${endDate}`);
 
   const options = {
-    scriptPath:'./scripts/',
+    scriptPath:'./server/scripts/',
     args: [startDate, endDate] 
   };
 
