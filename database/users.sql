@@ -12,3 +12,7 @@ CREATE TABLE IF NOT EXISTS lastupdate(
     tablename VARCHAR(255) NOT NULL UNIQUE,
     updatedate TIMESTAMP
 )
+
+CREATE TABLE IF NOT EXISTS holidays(
+    userid SERIAL PRIMARY KEY,
+)

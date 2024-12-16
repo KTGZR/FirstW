@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-engine  = create_engine("postgresql+psycopg2://postgres:root@172.23.0.6:5432/postgres")
+engine  = create_engine("postgresql+psycopg2://postgres:root@db:5432/postgres")
 
 df = pd.read_sql_table("Holidays",engine,schema="public")
 

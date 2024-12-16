@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 url =  "https://openholidaysapi.org" 
 Date_start = sys.argv[1]
 Date_end = sys.argv[2]
-connection = create_engine("postgresql+psycopg2://postgres:root@172.23.0.6:5432/postgres")
+connection = create_engine("postgresql+psycopg2://postgres:root@db:5432/postgres")
 
 def getDate(url,Date_start,Date_end):
     newurl = url + f'/PublicHolidays?countryIsoCode=BE&languageIsoCode=EN&validFrom={Date_start}&validTo={Date_end}'
