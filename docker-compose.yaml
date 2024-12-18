@@ -5,9 +5,6 @@ services:
       context: ./server
       dockerfile: Dockerfile
     env_file: .env
-    # networks:
-    #   main:
-    #     ipv4_address: 172.23.0.5
     ports: 
       - 8000:8000
     volumes:
@@ -19,7 +16,8 @@ services:
 
   database:
     image: database:1.0.0
-    container_name: ${DB_HOST}
+    #container_name: ${DB_HOST}
+    container_name: db
     build:
       context: ./database
       dockerfile: Dockerfile
@@ -29,9 +27,6 @@ services:
     volumes:
     - database-v:/var/lib/posgresql/data
     command: "-p ${DB_PORT}"
-    # networks:
-    #   main:
-    #     ipv4_address: 172.23.0.6
     healthcheck:
       test: ["CMD-SHELL","pg_isready -p ${DB_PORT} -U ${DB_USER} -d ${DB_NAME}"]
       interval: 5s
@@ -45,9 +40,5 @@ volumes:
   database-v:
     name: "database-v"
 
-# networks:
-#   main:
-#     name: my_first_net
-#     external: true
 
 

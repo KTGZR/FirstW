@@ -52,7 +52,7 @@ app.post('/takeDate', (req, res) => {
   console.log(`Дата начала: ${startDate}, Дата конца: ${endDate}`);
 
   const options = {
-    scriptPath:'./server/scripts/',
+    scriptPath:'./server/scripts',
     args: [startDate, endDate] 
   };
 
@@ -94,7 +94,7 @@ app.get('/success',(req,res)=>{
 });
   
   app.get('/data', (req, res) => {
-    pool.query('select * from public.Holidays', (err, result) => {
+    pool.query('select * from public.holidays', (err, result) => {
       if (err) {
         console.error('Ошибка при запросе к базе данных:', err);
         res.status(500).send('Ошибка сервера');
