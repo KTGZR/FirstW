@@ -1,14 +1,19 @@
+import os
 import pandas as pd
 from sqlalchemy import create_engine
 
-engine  = create_engine("postgresql+psycopg2://postgres:root@db:5432/postgres")
+engine  = create_engine('postgresql+psycopg2://postgres:root@db:5432/postgres')
+try:
+    with engine.connect() as conn:
+        print("Подключение успешно установлено")
+except Exception as e:
+    print(f"Ошибка подключения: {e}")
+df = pd.read_sql_table(table_name='holidays',con=engine,schema='public')
 
-df = pd.read_sql_table("Holidays",engine,schema="public")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+file_path = os.path.join(parent_dir,"Equipment\data.xlsx")
+df.to_excel(file_path)
 
-writer = pd.ExcelWriter('./Equipment/data.xlsx',engine='openpyxl',mode="a",if_sheet_exists="overlay",date_format='%d.%m.%y',datetime_format='%d.%m.%y')
-
-df.to_excel(writer,sheet_name="Holidays")
-
-pd.read_json('./Equipment/data.json').to_excel('./Equipment/data.xlsx',index=False)
 
 

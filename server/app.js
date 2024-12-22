@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 
 const port = 8000;
-const filePath = path.join(__dirname,'Equipment/data.xlsx');
+const filePath = path.join(__dirname,'./Equipment/data.xlsx');
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -33,7 +33,7 @@ app.get('/download',(req,res)=>{
   // res.setHeader('Content-Disposition','attachment; filename=Holidays.xlsx');
   // res.setHeader('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   const options = {
-    scriptPath:'./server/scripts/'
+    scriptPath:'./scripts/'
   }
   PythonShell.run('CollectData.py',options).then(messages=>{
     console.log('Данные с базы собраны в файл')
@@ -52,7 +52,7 @@ app.post('/takeDate', (req, res) => {
   console.log(`Дата начала: ${startDate}, Дата конца: ${endDate}`);
 
   const options = {
-    scriptPath:'./server/scripts',
+    scriptPath:'./scripts',
     args: [startDate, endDate] 
   };
 
