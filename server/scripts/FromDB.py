@@ -3,10 +3,12 @@ import json
 from datetime import datetime,timedelta
 import requests
 from sqlalchemy import create_engine
+import sys
 
-
-start_date='2022-10-26'
-end_date='2023-10-28'
+#start_date='2022-10-26'
+#end_date='2023-10-28'
+start_date = sys.argv[1]
+start_date = sys.argv[2]
 url = "https://api.nasa.gov/neo/rest/v1" 
 date_format='%Y-%m-%d'
 start_date = datetime.strptime(start_date, date_format)
